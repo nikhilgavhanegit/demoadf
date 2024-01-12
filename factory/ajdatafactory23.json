@@ -1,0 +1,9 @@
+{
+	"name": "ajdatafactory23",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "3dbc1f3e-84df-4bb3-809b-beb46fb4c673",
+		"tenantId": "9068bdcc-6a48-41f7-89c4-4e9213799c62"
+	}
+}

@@ -1,0 +1,58 @@
+{
+	"name": "Excel1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Blob",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "Sheet1",
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Data.xlsx",
+				"container": "source"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "id",
+				"type": "String"
+			},
+			{
+				"name": "src_database",
+				"type": "String"
+			},
+			{
+				"name": "src_schema",
+				"type": "String"
+			},
+			{
+				"name": "src_tablename",
+				"type": "String"
+			},
+			{
+				"name": "src_columns",
+				"type": "String"
+			},
+			{
+				"name": "dest_database",
+				"type": "String"
+			},
+			{
+				"name": "dest_schema",
+				"type": "String"
+			},
+			{
+				"name": "dest_tablename",
+				"type": "String"
+			},
+			{
+				"name": "status",
+				"type": "String"
+			}
+		]
+	}
+}

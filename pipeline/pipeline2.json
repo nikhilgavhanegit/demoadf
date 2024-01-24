@@ -21,6 +21,10 @@
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
+					"dataset": {
+						"referenceName": "DS_Watermark",
+						"type": "DatasetReference"
+					},
 					"firstRowOnly": false
 				}
 			},
@@ -68,14 +72,35 @@
 								"sink": {
 									"type": "AzureSqlSink",
 									"writeBehavior": "insert",
-									"sqlWriterUseTableLock": false
+									"sqlWriterUseTableLock": false,
+									"disableMetricsCollection": false
 								},
-								"enableStaging": false
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
 							},
+							"inputs": [
+								{
+									"referenceName": "AzureSqlTable5",
+									"type": "DatasetReference"
+								}
+							],
 							"outputs": [
 								{
-									"referenceName": "AzureSqlTable4",
-									"type": "DatasetReference"
+									"referenceName": "AzureSqlTable6",
+									"type": "DatasetReference",
+									"parameters": {
+										"tablename": {
+											"value": "@item().TargetTableName",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						},
@@ -109,7 +134,7 @@
 									"partitionOption": "None"
 								},
 								"dataset": {
-									"referenceName": "AzureSqlTable3",
+									"referenceName": "AzureSqlTable7",
 									"type": "DatasetReference"
 								}
 							}
@@ -138,7 +163,7 @@
 								"storedProcedureParameters": {
 									"maxdate": {
 										"value": {
-											"value": "@activity('Fetch Watermark table data').output.firstRow.NewWaterMarkValue",
+											"value": "@activity('Watermark date').output.firstRow.NewWaterMarkValue",
 											"type": "Expression"
 										},
 										"type": "DateTime"
@@ -151,6 +176,10 @@
 										"type": "String"
 									}
 								}
+							},
+							"linkedServiceName": {
+								"referenceName": "AzureSqlDatabase1",
+								"type": "LinkedServiceReference"
 							}
 						}
 					]

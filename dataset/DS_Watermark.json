@@ -1,0 +1,44 @@
+{
+	"name": "DS_Watermark",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "SourceTableName",
+				"type": "varchar"
+			},
+			{
+				"name": "TargetTableName",
+				"type": "varchar"
+			},
+			{
+				"name": "WaterMarkColumn",
+				"type": "varchar"
+			},
+			{
+				"name": "WaterMarkValue",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "SourceQuery",
+				"type": "varchar"
+			},
+			{
+				"name": "IsActive",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_watermark"
+		}
+	}
+}

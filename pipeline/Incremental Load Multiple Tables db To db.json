@@ -1,5 +1,5 @@
 {
-	"name": "pipeline2",
+	"name": "Incremental Load Multiple Tables db To db",
 	"properties": {
 		"activities": [
 			{
